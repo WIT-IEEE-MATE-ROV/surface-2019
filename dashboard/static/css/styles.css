@@ -1,0 +1,14 @@
+body {
+  margin: 1rem;
+}
+#container {
+  display: grid;
+  grid-template: repeat(2, auto) / repeat(4, auto);
+  grid-gap: 1rem;
+}
+#thrusterContainer {
+  grid-row: 2 / span 1;
+}
+#PIDContainer {
+  grid-row: 2 / span 1;
+}
