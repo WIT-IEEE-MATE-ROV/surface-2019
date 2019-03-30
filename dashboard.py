@@ -50,7 +50,7 @@ logoimage = ImageTk.PhotoImage(Image.open("./assets/nuglogo.png")
 
 logo = tk.Label(titlebar_frame, image=logoimage)
 logo.grid(column=0, row=0)
-title = tk.Label(titlebar_frame, text="Nugget Industries ROV (dashboard v0.1 alpha)", font=("Roboto", 25))
+title = tk.Label(titlebar_frame, text="Nugget Industries ROV (dashboard v0.3 alpha)", font=("Roboto", 25))
 title.grid(column=1, row=0)
 
 ##
@@ -64,13 +64,20 @@ l_fvideo = tk.Label(forwardvideo_frame, image=fvideo).grid(column=0, row=0)
 bvideo = ImageTk.PhotoImage(Image.open("./assets/novid.png").resize((520, 400), Image.ANTIALIAS))
 l_bvideo = tk.Label(bottomvideo_frame, image=fvideo).grid(column=0, row=0)
 
+# TODO: MAKE THIS NOT JUST BE AN IMAGE
+rollimg_ghost = ImageTk.PhotoImage(Image.open("./assets/rovback_ghost.png").resize((400, 400), Image.ANTIALIAS))
+l_rollimg_ghost = tk.Label(forwardvideo_frame, image=rollimg_ghost).grid(column=1, row=0)
+
+pitchimg = ImageTk.PhotoImage(Image.open("./assets/rovside_ghost.png").resize((400, 400), Image.ANTIALIAS))
+l_pitchimg = tk.Label(bottomvideo_frame, image=pitchimg).grid(column=1, row=0)
+
 tk.Button(button_frame, text="Start line tracking",   command=dbu.start_line_track  ).grid(column=0, row=0)
 tk.Button(button_frame, text="Measure Cannon",        command=dbu.measure_cannon    ).grid(column=1, row=0)
 tk.Button(button_frame, text="Count Benthic Species", command=dbu.count_benthic     ).grid(column=2, row=0)
 tk.Button(button_frame, text="Open PID Tuning",       command=dbu.open_pid          ).grid(column=3, row=0)
 tk.Button(button_frame, text="Open SSH Terminal",     command=dbu.open_ssh          ).grid(column=4, row=0)
-tk.Button(button_frame, text="ROV Mem",               command=dbu.open_rov_mem      ).grid(column=5, row=0)
-tk.Button(button_frame, text="PC Mem",                command=dbu.open_pc_mem       ).grid(column=6, row=0)
+# tk.Button(button_frame, text="ROV Mem",               command=dbu.open_rov_mem      ).grid(column=5, row=0)
+# tk.Button(button_frame, text="PC Mem",                command=dbu.open_pc_mem       ).grid(column=6, row=0)
 tk.Button(button_frame, text="Shutdown ROV",          command=dbu.shutdown_rov      ).grid(column=7, row=0)
 tk.Button(button_frame, text="Shutdown All",          command=dbu.shutdown          ).grid(column=8, row=0)
 
@@ -136,7 +143,7 @@ tk.Label(data_frame, text="12", font=("Roboto", CONTENT_FONT_SIZE)).grid(column=
 # The log thingy
 ##
 tk.Label(log_frame, text="  LOG  ", font=("Roboto", CONTENT_FONT_SIZE+5)).grid(column=0, row=0)
-logtext = tk.Text(log_frame, height=63)
+logtext = tk.Text(log_frame, height=50)
 logtext.insert(tk.END, "Logging ready to start!\n")
 logtext.insert(tk.END, "Waiting on the user to connect.\n")
 

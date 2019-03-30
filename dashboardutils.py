@@ -3,6 +3,8 @@ import tkinter
 import threading
 import getpass
 import subprocess
+import sys
+import os
 from tkinter import messagebox
 from PIL import Image, ImageTk
 from time import sleep
@@ -25,43 +27,15 @@ def setup_joystick():
     pygame.joystick.init()
     pygame.init()
 
-    global joystick_error_message_count
-    joystick_errors = [
-        "Joystick not connected",
-        "connect the joystick",
-        # "c o n n e c t   t h e   s t i c k",
-        # "Connect the joystick",
-        # "for the love of god connect the joystick",
-        # "jesus fucking christ",
-        # "I mean, come on here.",
-        # "Find the god damn usb port and plug in the damn thing.",
-        # "Oh my god.",
-        # "Man, I sure hope this is you and not my code, am I right?",
-        # "Because if it's my bad, I apologise for that.",
-        # "If this is your fault, I hope you know I hate you.",
-        # "People like you are why we can't have nice things.",
-        # "I'm sorry. That was mean.",
-        # "You want to break my code? Is that what you're trying to do?",
-        # "Fine. You win. I'm just going to stop bugging you about this.",
-        # "You know that this prompt is here to prevent things from crashing, right?",
-        "Fine.",
-        "y̵ ̷o̴ ̴u̸ ̷ ̵ ̸w̷ ̴i̶ ̴l̵ ̴l̸ ̴ ̶ ̵s̴ ̷u̵ ̵f̶ ̴f̵ ̶e̵ ̵r̶",
-        "(̵m̷a̸y̷b̴e̴)̵"
-    ]
+    try:
+        pygame.init()
+        pygame.joystick.init()
+        joystick = pygame.joystick.Joystick(0)
+    except pygame.error:
+        messagebox.showerror("OH SWEET BABY JESUS", "AAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH\n The joystick isn't connected, reconnect it and press OK")
+        os.execl(sys.executable, sys.executable, *sys.argv)
 
-    i = 0
-    while pygame.joystick.get_count() != 1:
-        i += 1
-        if i == joystick_errors.__len__():
-            break
-
-        messagebox.showerror("OH SWEET BABY JESUS", "{:s}".format(joystick_errors[i]))
-
-    pygame.joystick.init()
-    pygame.init()
-    joystick = pygame.joystick.Joystick(0)
     joystick.init()
-
     return joystick
 
 def send(type, val):
