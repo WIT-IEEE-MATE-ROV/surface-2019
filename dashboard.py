@@ -45,7 +45,7 @@ log_frame.grid_rowconfigure(0, weight=0)
 ##
 # Top bar- the logo and title
 ##
-logoimage = ImageTk.PhotoImage(Image.open("/home/chris/Projects/rov2019/surface/assets/nuglogo.png")
+logoimage = ImageTk.PhotoImage(Image.open("./assets/nuglogo.png")
                                .resize((100, 100), Image.ANTIALIAS))
 
 logo = tk.Label(titlebar_frame, image=logoimage)
@@ -58,10 +58,10 @@ title.grid(column=1, row=0)
 ##
 # TODO: MAKE THIS NOT JUST BE AN IMAGE
 #                                           lol
-fvideo = ImageTk.PhotoImage(Image.open("/home/chris/Documents/novid.png").resize((520, 400), Image.ANTIALIAS))
+fvideo = ImageTk.PhotoImage(Image.open("./assets/novid.png").resize((520, 400), Image.ANTIALIAS))
 l_fvideo = tk.Label(forwardvideo_frame, image=fvideo).grid(column=0, row=0)
 
-bvideo = ImageTk.PhotoImage(Image.open("/home/chris/Documents/novid.png").resize((520, 400), Image.ANTIALIAS))
+bvideo = ImageTk.PhotoImage(Image.open("./assets/novid.png").resize((520, 400), Image.ANTIALIAS))
 l_bvideo = tk.Label(bottomvideo_frame, image=fvideo).grid(column=0, row=0)
 
 tk.Button(button_frame, text="Start line tracking",   command=dbu.start_line_track  ).grid(column=0, row=0)
