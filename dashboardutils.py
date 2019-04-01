@@ -1,3 +1,5 @@
+import socket
+import json
 import pygame
 import tkinter
 import threading
@@ -113,7 +115,7 @@ def shutdown_rov():
     result = messagebox.askokcancel(":0", "Turn off ROV?")
     if result:
         if getpass.getuser() == "nugget":
-            subprocess.call(['/home/nugget/shutdown-rov.sh'])
+            subprocess.call(['/home/nugget/surface/shutdown-rov.sh'])
         else:
             messagebox.showinfo(":)",
                                 "The dashboard would have called the shutdown script, but you are not the Nugget user \
