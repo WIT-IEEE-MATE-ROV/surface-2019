@@ -1,8 +1,8 @@
 import socket, pickle, pygame, os, sys
 from time import sleep
 
-HOST = '10.0.0.212'
-PORT = 6969
+HOST = 'nugpotpi.local'
+PORT = 2015
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((HOST, PORT))
