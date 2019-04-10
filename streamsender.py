@@ -1,14 +1,22 @@
 import socket, pickle, pygame, os, sys
 from time import sleep
+from tkinter import messagebox
 
 HOST = 'nugpotpi.local'
 PORT = 2015
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((HOST, PORT))
-except ConnectionRefusedError:
+except:
     s = None
     print("Socket failed")
+    result = messagebox.askokcancel("YOU'RE NOT CONNECTED STOOPID", "Socket "+
+                           "connection failed, hit OK to restart and try "+
+                           "connecting again or hit cancel to proceed without a "+
+                           "connection. (Nothing will happen on the ROV, but this "+
+                           "might be useful for debug)")
+    if result:
+        os.execl(sys.executable, sys.executable, *sys.argv)
 
 arr = ([1,2,3,4], [1,2,3,4,5,6,7,8,9,10,11,12], [1], [1,2])
 old = ([1,2,3,4], [1,2,3,4,5,6,7,8,9,10,11,12], [1], [1,2])
@@ -88,4 +96,3 @@ while True:
         if s is not None:
             s.close()
         sys.exit()
-
