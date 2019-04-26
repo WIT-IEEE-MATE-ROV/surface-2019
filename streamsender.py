@@ -10,13 +10,13 @@ try:
 except:
     s = None
     print("Socket failed")
-    result = messagebox.askokcancel("YOU'RE NOT CONNECTED STOOPID", "Socket "+
-                           "connection failed, hit OK to restart and try "+
-                           "connecting again or hit cancel to proceed without a "+
-                           "connection. (Nothing will happen on the ROV, but this "+
-                           "might be useful for debug)")
-    if result:
-        os.execl(sys.executable, sys.executable, *sys.argv)
+#    result = messagebox.askokcancel("YOU'RE NOT CONNECTED STOOPID", "Socket "+
+#                           "connection failed, hit OK to restart and try "+
+#                           "connecting again or hit cancel to proceed without a "+
+#                           "connection. (Nothing will happen on the ROV, but this "+
+#                           "might be useful for debug)")
+#    if result:
+#        os.execl(sys.executable, sys.executable, *sys.argv)
 
 arr = ([1,2,3,4], [1,2,3,4,5,6,7,8,9,10,11,12], [1], [1,2])
 old = ([1,2,3,4], [1,2,3,4,5,6,7,8,9,10,11,12], [1], [1,2])
@@ -53,6 +53,7 @@ try:
     pygame.joystick.init()
     joystick = pygame.joystick.Joystick(0)
 except pygame.error:
+    print("pygame error")
     os.execl(sys.executable, sys.executable, *sys.argv)
 
 joystick.init()
